@@ -29,7 +29,7 @@ PAGES={
  "index":dict(title="NG Façades – Accueil",desc="NG Façades : création, rénovation et isolation de façades à Genève et à Lausanne. Visite sur place et devis gratuits.",active="accueil",label="page d'accueil",css="",main=home+P("deroule.html")),
  "services":dict(title="NG Façades – Nos services",desc="Isolation, crépi, pierre, brique, peinture, entretien, façade ventilée et protection anti-carbonatation : les services de NG Façades à Genève et à Lausanne.",active="services",label="page Nos services",css=P("pagehead.css")+P("services-b.css"),main=P("services-b.html")+P("deroule.html")),
  "realisations":dict(title="NG Façades – Nos réalisations",desc="Découvrez des chantiers de façades réalisés par NG Façades : isolation, crépi, peinture, façade ventilée et entretien.",active="realisations",label="page Nos réalisations · chantiers d'exemple",css=P("pagehead.css")+P("realisations.css"),main=P("realisations.html")),
- "mentions-legales":dict(title="NG Façades – Mentions légales",desc="Mentions légales et politique de confidentialité du site NG Façades.",active="",label="page Mentions légales et confidentialité",css=P("pagehead.css")+P("legal.css"),main=P("legal.html"),contact=False,note="passages surlignés à compléter"),
+ "mentions-legales":dict(title="NG Façades – Mentions légales",desc="Mentions légales et politique de confidentialité du site NG Façades.",active="",label="page Mentions légales et confidentialité",css=P("legal.css"),main=P("legal.html"),contact=False,note="passages surlignés à compléter"),
 }
 def page(k):
     p=PAGES[k]
