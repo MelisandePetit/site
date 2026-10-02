@@ -46,7 +46,7 @@ def page(k):
 <a class="whatsapp" href="https://wa.me/41782302841" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp"><svg><use href="#i-wa"/></svg></a>
 
 <script>
-{P("script.js")}</script>
+{P("script.js").replace("/*FORM*/\n",P("form-maquette.js"))}</script>
 '''
     return top,body
 full=lambda t,b:'<!doctype html>\n<html lang="fr">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'+t+'</head>\n<body>'+b+'</body>\n</html>\n'
@@ -73,7 +73,8 @@ if os.path.isdir(SITE):
         t,b=page(k)
         b=re.sub(r'<div class="maquette">.*?</div>\n\n','',b)
         t=t.replace('<meta name="description"','<meta name="robots" content="noindex, nofollow">\n<meta name="description"')
-        b=b.replace("Maquette : l'envoi du formulaire sera branché lors de la mise en ligne.","Le formulaire n'est pas encore actif. En attendant, appelez-nous ou écrivez-nous par e-mail.")
+        b=b.replace(P("form-maquette.js"),P("form-site.js"))
+        b=b.replace("Maquette : l'envoi du formulaire sera branché lors de la mise en ligne.","")
         open(f"{SITE}/{k}.html","w").write(full(t,b))
     for u in sorted(used): shutil.copy(f"{ART}/{u}", f"{SITE}/{u}")
     open(SITE+"/robots.txt","w").write("User-agent: *\nDisallow: /\n")

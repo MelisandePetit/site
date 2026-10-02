@@ -16,16 +16,17 @@
             <div><b>Nathan Guedj</b><span>Ingénieur en construction,<br>directeur</span></div>
           </div>
         </div>
-        <form id="form-b" novalidate>
+        <form id="form-b">
           <p class="form-titre">Votre demande</p>
-          <div class="field"><label for="b-nom">Nom et prénom</label><input id="b-nom" autocomplete="name"></div>
-          <div class="field"><label for="b-tel">Téléphone</label><input id="b-tel" type="tel" autocomplete="tel"></div>
-          <div class="field full"><label for="b-email">E-mail</label><input id="b-email" type="email" autocomplete="email"></div>
-          <div class="field"><label for="b-type">Type de bâtiment</label><select id="b-type"><option>Maison</option><option>Immeuble</option><option>Commerce / bureau</option><option>Autre</option></select></div>
-          <div class="field"><label for="b-travaux">Travaux souhaités</label><select id="b-travaux"><option>Je ne sais pas encore</option><option>Isolation</option><option>Crépi</option><option>Pierre</option><option>Brique</option><option>Peinture</option><option>Entretien / lavage</option><option>Façade ventilée</option><option>Autre</option></select></div>
-          <div class="field full"><label for="b-msg">Votre message</label><textarea id="b-msg" placeholder="Adresse du bien, état de la façade, délai souhaité…"></textarea></div>
-          <div class="form-foot"><button class="btn btn-primary" type="submit">Envoyer ma demande <svg><use href="#i-arrow"/></svg></button></div>
-          <p class="merci" id="merci-b" hidden>Maquette : l'envoi du formulaire sera branché lors de la mise en ligne.</p>
+          <div class="field"><label for="b-nom">Nom et prénom</label><input id="b-nom" name="nom" autocomplete="name" required></div>
+          <div class="field"><label for="b-tel">Téléphone</label><input id="b-tel" name="telephone" type="tel" autocomplete="tel"></div>
+          <div class="field full"><label for="b-email">E-mail</label><input id="b-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="b-type">Type de bâtiment</label><select id="b-type" name="batiment"><option>Maison</option><option>Immeuble</option><option>Commerce / bureau</option><option>Autre</option></select></div>
+          <div class="field"><label for="b-travaux">Travaux souhaités</label><select id="b-travaux" name="travaux"><option>Je ne sais pas encore</option><option>Isolation</option><option>Crépi</option><option>Pierre</option><option>Brique</option><option>Peinture</option><option>Entretien / lavage</option><option>Façade ventilée</option><option>Autre</option></select></div>
+          <div class="field full"><label for="b-msg">Votre message</label><textarea id="b-msg" name="message" placeholder="Adresse du bien, état de la façade, délai souhaité…"></textarea></div>
+          <input type="checkbox" name="botcheck" id="b-botcheck" tabindex="-1" autocomplete="off" hidden>
+          <div class="form-foot"><button class="btn btn-primary" type="submit" id="b-envoyer">Envoyer ma demande <svg><use href="#i-arrow"/></svg></button></div>
+          <p class="merci" id="merci-b" role="status" hidden>Maquette : l'envoi du formulaire sera branché lors de la mise en ligne.</p>
         </form>
       </div>
     </div>

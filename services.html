@@ -126,6 +126,7 @@ textarea{min-height:130px;resize:vertical}
 .form-foot{grid-column:1/-1;margin-top:6px}
 .btn-dark{background:var(--graphite);color:var(--chaux)}
 .btn-dark:hover{background:#000}
+.btn:disabled{opacity:.6;cursor:default}
 .merci{grid-column:1/-1;background:var(--chaux);padding:14px 16px;font-size:.9rem;border-radius:var(--radius)}
 
 /* ---------- Devis : carte deux volets ---------- */
@@ -506,16 +507,17 @@ footer a:hover{color:var(--moutarde-clair)}
             <div><b>Nathan Guedj</b><span>Ingénieur en construction,<br>directeur</span></div>
           </div>
         </div>
-        <form id="form-b" novalidate>
+        <form id="form-b">
           <p class="form-titre">Votre demande</p>
-          <div class="field"><label for="b-nom">Nom et prénom</label><input id="b-nom" autocomplete="name"></div>
-          <div class="field"><label for="b-tel">Téléphone</label><input id="b-tel" type="tel" autocomplete="tel"></div>
-          <div class="field full"><label for="b-email">E-mail</label><input id="b-email" type="email" autocomplete="email"></div>
-          <div class="field"><label for="b-type">Type de bâtiment</label><select id="b-type"><option>Maison</option><option>Immeuble</option><option>Commerce / bureau</option><option>Autre</option></select></div>
-          <div class="field"><label for="b-travaux">Travaux souhaités</label><select id="b-travaux"><option>Je ne sais pas encore</option><option>Isolation</option><option>Crépi</option><option>Pierre</option><option>Brique</option><option>Peinture</option><option>Entretien / lavage</option><option>Façade ventilée</option><option>Autre</option></select></div>
-          <div class="field full"><label for="b-msg">Votre message</label><textarea id="b-msg" placeholder="Adresse du bien, état de la façade, délai souhaité…"></textarea></div>
-          <div class="form-foot"><button class="btn btn-primary" type="submit">Envoyer ma demande <svg><use href="#i-arrow"/></svg></button></div>
-          <p class="merci" id="merci-b" hidden>Le formulaire n'est pas encore actif. En attendant, appelez-nous ou écrivez-nous par e-mail.</p>
+          <div class="field"><label for="b-nom">Nom et prénom</label><input id="b-nom" name="nom" autocomplete="name" required></div>
+          <div class="field"><label for="b-tel">Téléphone</label><input id="b-tel" name="telephone" type="tel" autocomplete="tel"></div>
+          <div class="field full"><label for="b-email">E-mail</label><input id="b-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="b-type">Type de bâtiment</label><select id="b-type" name="batiment"><option>Maison</option><option>Immeuble</option><option>Commerce / bureau</option><option>Autre</option></select></div>
+          <div class="field"><label for="b-travaux">Travaux souhaités</label><select id="b-travaux" name="travaux"><option>Je ne sais pas encore</option><option>Isolation</option><option>Crépi</option><option>Pierre</option><option>Brique</option><option>Peinture</option><option>Entretien / lavage</option><option>Façade ventilée</option><option>Autre</option></select></div>
+          <div class="field full"><label for="b-msg">Votre message</label><textarea id="b-msg" name="message" placeholder="Adresse du bien, état de la façade, délai souhaité…"></textarea></div>
+          <input type="checkbox" name="botcheck" id="b-botcheck" tabindex="-1" autocomplete="off" hidden>
+          <div class="form-foot"><button class="btn btn-primary" type="submit" id="b-envoyer">Envoyer ma demande <svg><use href="#i-arrow"/></svg></button></div>
+          <p class="merci" id="merci-b" role="status" hidden></p>
         </form>
       </div>
     </div>
@@ -569,7 +571,36 @@ footer a:hover{color:var(--moutarde-clair)}
     document.getElementById('next').onclick=()=>track.scrollBy({left:step(),behavior:'smooth'});
     document.getElementById('prev').onclick=()=>track.scrollBy({left:-step(),behavior:'smooth'});
   }
-  document.getElementById('form-b').addEventListener('submit',e=>{e.preventDefault();document.getElementById('merci-b').hidden=false});
+  // Envoi du formulaire de devis par e-mail (service Web3Forms)
+  const form=document.getElementById('form-b'), info=document.getElementById('merci-b'), bouton=document.getElementById('b-envoyer');
+  const libelle=bouton?bouton.innerHTML:'';
+  if(form) form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const v=n=>form.elements[n].value.trim();
+    bouton.disabled=true; bouton.textContent='Envoi en cours…'; info.hidden=true;
+    try{
+      const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({
+        access_key:'ced3a1aa-89b7-4208-9231-da04f29b1912',
+        subject:'Demande de devis – '+v('nom'),
+        from_name:'Site NG Façades',
+        replyto:v('email'),
+        botcheck:form.elements.botcheck.checked,
+        'Nom et prénom':v('nom'),
+        'Téléphone':v('telephone')||'non indiqué',
+        email:v('email'),
+        'Type de bâtiment':v('batiment'),
+        'Travaux souhaités':v('travaux'),
+        'Message':v('message')||'(aucun message)'
+      })});
+      const d=await r.json();
+      if(!r.ok||!d.success) throw new Error(d.message||'envoi refusé');
+      form.reset();
+      info.textContent='Merci, votre demande est bien envoyée. Nous vous recontactons dès que possible.';
+    }catch(err){
+      info.textContent="L'envoi n'a pas fonctionné. Appelez-nous au +41 78 230 28 41 ou écrivez-nous à info@ngfacades.ch.";
+    }
+    info.hidden=false; bouton.disabled=false; bouton.innerHTML=libelle;
+  });
 </script>
 </body>
 </html>
