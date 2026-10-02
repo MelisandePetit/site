@@ -234,23 +234,16 @@ footer a:hover{color:var(--moutarde-clair)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
-/* ---------- Mentions légales et confidentialité : page sobre, texte seul ---------- */
-.legal-page .wrap{max-width:760px;padding-block:clamp(40px,5vw,64px) clamp(56px,7vw,88px)}
-.legal-page h1{font-size:clamp(1.5rem,2.6vw,1.9rem);font-weight:600;line-height:1.25;margin-bottom:clamp(28px,4vw,40px)}
+/* ---------- Mentions légales et confidentialité : texte formel, sans mise en forme ---------- */
+.legal-page .wrap{max-width:860px;padding-block:clamp(36px,4.5vw,56px) clamp(48px,6vw,72px)}
+.legal-page h1{font-size:1rem;font-weight:500;line-height:1.4;margin-bottom:22px}
 .legal-page section{scroll-margin-top:110px}
-.legal-page section+section{margin-top:clamp(40px,5vw,56px)}
-.legal-page h2{font-size:1.2rem;font-weight:600;margin-bottom:6px;padding-bottom:10px;border-bottom:1px solid var(--enduit)}
-.legal-page .maj{font-size:.85rem;color:var(--texte-doux);margin-block:12px}
-.legal-page h3{font-size:.97rem;font-weight:600;margin-block:24px 6px}
-.legal-page p,.legal-page li,.legal-page dd{color:var(--texte-doux);font-size:.93rem;line-height:1.65}
-.legal-page p+p{margin-top:8px}
-.legal-page ul{margin:6px 0 0;padding-left:1.2em;display:grid;gap:4px}
-.legal-page a{color:var(--graphite)}
-.legal-page dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:4px 24px;font-size:.93rem}
-.legal-page dt{font-weight:500}
-.legal-page dd{margin:0}
-.legal-page mark{background:#F6E3B4;color:var(--graphite);padding:1px 6px;border-radius:3px;font-size:.92em}
-@media (max-width:560px){.legal-page dl{grid-template-columns:1fr;gap:0}.legal-page dd{margin-bottom:8px}}
+.legal-page section+section{margin-top:22px}
+.legal-page h2{font-size:.82rem;font-weight:500;line-height:1.5;margin-bottom:4px}
+.legal-page p{color:var(--texte-doux);font-size:.82rem;line-height:1.6;text-align:justify}
+.legal-page p+p{margin-top:6px}
+.legal-page mark{background:#F6E3B4;color:var(--graphite);padding:0 4px;border-radius:2px}
+@media (max-width:620px){.legal-page p{text-align:left}}
 </style>
 </head>
 <body>
@@ -292,38 +285,15 @@ footer a:hover{color:var(--moutarde-clair)}
 
       <section id="mentions">
         <h2>Mentions légales</h2>
-
-        <h3>Éditeur du site</h3>
-        <dl>
-          <dt>Entreprise</dt><dd>NG Façades <mark>forme juridique à compléter</mark></dd>
-          <dt>Adresse</dt><dd>Chemin de la Tour-de-Champel 5, 1206 Genève, Suisse</dd>
-          <dt>Responsable</dt><dd>Nathan Guedj, directeur</dd>
-          <dt>Téléphone</dt><dd><a href="tel:+41782302841">+41 78 230 28 41</a></dd>
-          <dt>E-mail</dt><dd><a href="mailto:info@ngfacades.ch">info@ngfacades.ch</a></dd>
-          <dt>Numéro d'entreprise (IDE)</dt><dd><mark>CHE-… à compléter</mark></dd>
-        </dl>
-
-        <h3>Hébergement</h3>
-        <p>Le site est hébergé par <mark>nom et adresse de l'hébergeur, à compléter à la mise en ligne</mark>.</p>
-
-        <h3>Contenu du site</h3>
-        <p>Les informations publiées sur ce site sont données à titre indicatif. Elles ne constituent pas une offre ferme. Seul un devis écrit de NG Façades engage l'entreprise.</p>
-        <p>Nous mettons le site à jour avec soin, mais nous ne pouvons pas garantir que toutes les informations sont complètes et exactes à tout moment.</p>
-
-        <h3>Propriété intellectuelle</h3>
-        <p>Les textes, le logo, les illustrations et les photos de ce site appartiennent à NG Façades ou sont utilisés avec l'accord de leurs auteurs. Toute reproduction demande notre autorisation écrite.</p>
-
-        <h3>Droit applicable</h3>
+        <p>Éditeur du site : NG Façades <mark>forme juridique à compléter</mark>, Chemin de la Tour-de-Champel 5, 1206 Genève, Suisse. Responsable : Nathan Guedj, directeur. Téléphone : +41 78 230 28 41. E-mail : info@ngfacades.ch. Numéro d'entreprise (IDE) : <mark>CHE-… à compléter</mark>. Hébergement : <mark>nom et adresse de l'hébergeur, à compléter à la mise en ligne</mark>.</p>
+        <p>Les informations publiées sur ce site sont données à titre indicatif et ne constituent pas une offre ferme. Seul un devis écrit de NG Façades engage l'entreprise. NG Façades met le site à jour avec soin, mais ne peut pas garantir que toutes les informations sont complètes et exactes à tout moment.</p>
+        <p>Les textes, le logo, les illustrations et les photos de ce site appartiennent à NG Façades ou sont utilisés avec l'accord de leurs auteurs. Toute reproduction est soumise à l'autorisation écrite de NG Façades.</p>
         <p>Ce site est soumis au droit suisse. En cas de litige, les tribunaux de Genève sont compétents, sous réserve des dispositions légales impératives.</p>
       </section>
 
       <section id="confidentialite">
         <h2>Politique de confidentialité</h2>
-
-        <p>NG Façades, Chemin de la Tour-de-Champel 5, 1206 Genève, est responsable du traitement des données que vous lui transmettez par le formulaire de devis, par e-mail, par téléphone ou par WhatsApp.</p>
-        <p>Ces données servent uniquement à traiter votre demande et, le cas échéant, à établir un devis et à réaliser les travaux.</p>
-        <p>Elles peuvent être transmises aux prestataires techniques nécessaires au fonctionnement du site et de la messagerie, dont certains peuvent se trouver hors de Suisse.</p>
-        <p>Pour toute question ou demande concernant vos données : <a href="mailto:info@ngfacades.ch">info@ngfacades.ch</a>.</p>
+        <p>NG Façades, Chemin de la Tour-de-Champel 5, 1206 Genève, est responsable du traitement des données que vous lui transmettez par le formulaire de devis, par e-mail, par téléphone ou par WhatsApp. Ces données servent uniquement à traiter votre demande et, le cas échéant, à établir un devis et à réaliser les travaux. Elles peuvent être transmises aux prestataires techniques nécessaires au fonctionnement du site et de la messagerie, dont certains peuvent se trouver hors de Suisse. Pour toute question ou demande concernant vos données : info@ngfacades.ch.</p>
       </section>
     </div>
   </div>
