@@ -26,7 +26,13 @@
           <div class="field full"><label for="b-msg">Votre message</label><textarea id="b-msg" name="message" placeholder="Adresse du bien, état de la façade, délai souhaité…"></textarea></div>
           <input type="checkbox" name="botcheck" id="b-botcheck" tabindex="-1" autocomplete="off" hidden>
           <div class="form-foot"><button class="btn btn-primary" type="submit" id="b-envoyer">Envoyer ma demande <svg><use href="#i-arrow"/></svg></button></div>
-          <p class="merci" id="merci-b" role="status" hidden>Maquette : l'envoi du formulaire sera branché lors de la mise en ligne.</p>
+          <p class="merci" id="merci-b" role="alert" hidden></p>
+          <div class="confirmation" id="confirmation" role="status" tabindex="-1" hidden>
+            <span class="coche"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3>Merci, votre demande est bien envoyée.</h3>
+            <p id="confirmation-texte">Nous vous recontactons dès que possible.</p>
+            <button class="btn btn-ghost" type="button" id="b-autre">Envoyer une autre demande</button>
+          </div>
         </form>
       </div>
     </div>
