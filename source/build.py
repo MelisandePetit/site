@@ -79,3 +79,4 @@ if os.path.isdir(SITE):
     for u in sorted(used): shutil.copy(f"{ART}/{u}", f"{SITE}/{u}")
     open(SITE+"/robots.txt","w").write("User-agent: *\nDisallow: /\n")
     open(SITE+"/.nojekyll","w").write("")
+    open(SITE+"/CNAME","w").write("ngfacades.ch\n")
