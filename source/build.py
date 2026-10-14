@@ -67,16 +67,27 @@ print(sorted(used))
 # ---- Version en ligne (dépôt GitHub) : sans bandeau maquette, non référencée
 import sys
 SITE="/home/claude/site"
+APERCU="apercu-1ua7b1uu"   # adresse privée de l'aperçu complet (site caché)
 if os.path.isdir(SITE):
-    os.makedirs(SITE+"/img",exist_ok=True)
+    D=SITE+"/"+APERCU
+    # nettoie l'ancienne version publiée à la racine
+    for f in list(PAGES)+["mentions-legales"]:
+        if os.path.exists(f"{SITE}/{f}.html"): os.remove(f"{SITE}/{f}.html")
+    if os.path.isdir(SITE+"/img"): shutil.rmtree(SITE+"/img")
+    os.makedirs(D+"/img",exist_ok=True)
     for k in PAGES:
         t,b=page(k)
         b=re.sub(r'<div class="maquette">.*?</div>\n\n','',b)
         t=t.replace('<meta name="description"','<meta name="robots" content="noindex, nofollow">\n<meta name="description"')
         b=b.replace(P("form-maquette.js"),P("form-site.js"))
         b=b.replace("Maquette : l'envoi du formulaire sera branché lors de la mise en ligne.","")
-        open(f"{SITE}/{k}.html","w").write(full(t,b))
-    for u in sorted(used): shutil.copy(f"{ART}/{u}", f"{SITE}/{u}")
+        open(f"{D}/{k}.html","w").write(full(t,b))
+    for u in sorted(used): shutil.copy(f"{ART}/{u}", f"{D}/{u}")
+    # page d'attente publique sur ngfacades.ch
+    os.makedirs(SITE+"/img",exist_ok=True)
+    shutil.copy(f"{ART}/img/logo-couleur.svg", SITE+"/img/logo-couleur.svg")
+    open(SITE+"/index.html","w").write(P("attente.html"))
+    open(SITE+"/404.html","w").write(P("attente.html"))
     open(SITE+"/robots.txt","w").write("User-agent: *\nDisallow: /\n")
     open(SITE+"/.nojekyll","w").write("")
     open(SITE+"/CNAME","w").write("ngfacades.ch\n")
