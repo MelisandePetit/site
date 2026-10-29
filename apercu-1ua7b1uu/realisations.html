@@ -257,9 +257,13 @@ footer a:hover{color:var(--moutarde-clair)}
 .reals .wrap{padding-block:clamp(36px,5vw,64px) 0}
 .reals .grille-r{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,28px);align-items:start}
 .real{background:var(--blanc);border:1px solid var(--enduit);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
-.real .ph{position:relative}
-.real img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.real .cat{position:absolute;left:14px;top:14px;background:var(--graphite);color:var(--chaux);font-size:.74rem;font-weight:600;letter-spacing:.06em;padding:6px 11px;border-radius:99px}
+.real .ph{position:relative;display:block;width:100%;padding:0;border:0;background:var(--enduit);cursor:zoom-in;overflow:hidden}
+.real .ph:focus-visible{outline:3px solid var(--moutarde);outline-offset:-3px}
+.real .ph img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .4s ease}
+.real .ph:hover img{transform:scale(1.03)}
+.real .nb{position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:6px;background:rgba(43,43,42,.82);color:var(--chaux);font-size:.76rem;font-weight:600;padding:6px 11px;border-radius:99px}
+.real .nb svg{width:15px;height:15px}
+.real .cat{text-align:left;position:absolute;left:14px;top:14px;background:var(--graphite);color:var(--chaux);font-size:.74rem;font-weight:600;letter-spacing:.06em;padding:6px 11px;border-radius:99px}
 .real .corps{padding:20px 22px 22px;display:grid;gap:8px}
 .real .lieu{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--texte-doux)}
 .real .lieu svg{width:14px;height:14px;color:var(--moutarde)}
@@ -274,6 +278,18 @@ footer a:hover{color:var(--moutarde-clair)}
 .real details li{display:flex;gap:10px;align-items:baseline;line-height:1.45}
 .real details li::before{content:"";width:12px;height:6px;border-radius:2px;background:var(--moutarde);flex:none;transform:translateY(-2px)}
 .real details b{font-weight:600}
+.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;margin:0;overflow:hidden}
+.lb[open]{display:grid;place-items:center}
+.lb::backdrop{background:rgba(24,24,23,.96)}
+.lb img{max-width:min(92vw,1100px);max-height:84vh;width:auto;height:auto;object-fit:contain;border-radius:6px}
+.lb button{position:absolute;border:0;background:rgba(244,242,238,.12);color:var(--chaux);width:48px;height:48px;border-radius:50%;font:300 2rem/1 Poppins,sans-serif;cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:var(--moutarde);color:var(--graphite)}
+.lb-x{top:18px;right:18px}
+.lb-p{left:18px;top:50%;transform:translateY(-50%)}
+.lb-s{right:18px;top:50%;transform:translateY(-50%)}
+.lb-n{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:var(--chaux);font-size:.85rem;letter-spacing:.08em}
+.lb.solo .lb-p,.lb.solo .lb-s,.lb.solo .lb-n{display:none}
+@media (max-width:620px){.lb-p,.lb-s{top:auto;bottom:12px;transform:none}.lb-n{bottom:28px}}
 @media (max-width:1020px){.reals .grille-r{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:620px){.reals .grille-r{grid-template-columns:1fr}}
 </style>
@@ -285,6 +301,7 @@ footer a:hover{color:var(--moutarde-clair)}
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-photos" viewBox="0 0 24 24"><rect x="3" y="6" width="15" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 3h12a2 2 0 0 1 2 2v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="m3 16 4-4 4 4 2-2 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
   <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7M5 10v10h14V10M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
   <!-- engagements (trait crayon, style des illustrations) -->
   <symbol id="e-calendar" viewBox="0 0 40 40"><rect x="6" y="9" width="28" height="25" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 16h28M13 5v7M27 5v7M12 22h3M18.5 22h3M25 22h3M12 28h3M18.5 28h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -316,82 +333,118 @@ footer a:hover{color:var(--moutarde-clair)}
     <div class="wrap">
       <span class="eyebrow">Nos réalisations</span>
       <h1>Nos derniers chantiers, en images et en détail.</h1>
-      <p>Un aperçu de notre travail : isolation, crépi, peinture, entretien… sur des maisons comme sur des immeubles.</p>
+      <p>Isolation, crépi, façade ventilée, ravalement… une sélection de chantiers réalisés autour de Genève, sur des maisons comme sur des immeubles.</p>
     </div>
   </section>
 
   <section class="reals">
     <div class="wrap">
       <div class="grille-r" id="grille-r">
-        <article class="real" data-cat="isolation">
-          <div class="ph"><img src="img/real-1.jpg" alt="Maison individuelle avec façade claire"><span class="cat">Isolation</span></div>
+        <article class="real">
+          <button class="ph" type="button" data-photos="img/real-colombieres-1.jpg|img/real-colombieres-2.jpg|img/real-colombieres-3.jpg|img/real-colombieres-4.jpg|img/real-colombieres-5.jpg|img/real-colombieres-6.jpg|img/real-colombieres-7.jpg" aria-label="Voir les photos : Surélévation d'une école, Versoix"><img src="img/real-colombieres-1.jpg" alt="Surélévation d'une école, Versoix" loading="lazy"><span class="cat">Isolation · Crépi</span><span class="nb"><svg><use href="#i-photos"/></svg>7 photos</span></button>
           <div class="corps">
-            <span class="lieu"><svg><use href="#i-pin"/></svg>Lieu à préciser</span>
-            <h2>Isolation et crépi d'une maison individuelle</h2>
-            <p>Isolation thermique par l'extérieur de toute la maison, avec une finition en crépi taloché.</p>
+            <span class="lieu"><svg><use href="#i-pin"/></svg>Versoix</span>
+            <h2>Surélévation d'une école</h2>
+            <p>Isolation de la surélévation en laine de roche, puis finition en crépi minéral à la chaux.</p>
             <details>
               <summary>Les détails du chantier</summary>
-              <ul><li><span><b>Bâtiment :</b> à préciser</span></li><li><span><b>Travaux :</b> à préciser</span></li><li><span><b>Matériaux :</b> à préciser</span></li><li><span><b>Durée :</b> à préciser</span></li></ul>
+              <ul><li><span><b>Lieu :</b> Chemin des Colombières, Versoix</span></li><li><span><b>Bâtiment :</b> École, surélévation</span></li><li><span><b>Travaux :</b> Isolation thermique par l'extérieur et crépi</span></li><li><span><b>Matériaux :</b> Laine de roche, crépi minéral à la chaux</span></li></ul>
             </details>
           </div>
         </article>
-        <article class="real" data-cat="crepi">
-          <div class="ph"><img src="img/real-2.jpg" alt="Façades d'immeubles anciens"><span class="cat">Crépi</span></div>
+        <article class="real">
+          <button class="ph" type="button" data-photos="img/real-cornillons-3.jpg|img/real-cornillons-1.jpg|img/real-cornillons-2.jpg|img/real-cornillons-4.jpg|img/real-cornillons-5.jpg|img/real-cornillons-6.jpg" aria-label="Voir les photos : Transformation et extension d'une villa, Pregny-Chambésy"><img src="img/real-cornillons-3.jpg" alt="Transformation et extension d'une villa, Pregny-Chambésy" loading="lazy"><span class="cat">Isolation · Pierre</span><span class="nb"><svg><use href="#i-photos"/></svg>6 photos</span></button>
           <div class="corps">
-            <span class="lieu"><svg><use href="#i-pin"/></svg>Lieu à préciser</span>
-            <h2>Rénovation du crépi d'un immeuble</h2>
-            <p>Reprise complète du crépi : réparation des fissures, puis nouvelle finition dans la teinte d'origine.</p>
+            <span class="lieu"><svg><use href="#i-pin"/></svg>Pregny-Chambésy</span>
+            <h2>Transformation et extension d'une villa</h2>
+            <p>Isolation de la villa transformée et agrandie, avec une finition qui associe la pierre et le crépi.</p>
             <details>
               <summary>Les détails du chantier</summary>
-              <ul><li><span><b>Bâtiment :</b> à préciser</span></li><li><span><b>Travaux :</b> à préciser</span></li><li><span><b>Matériaux :</b> à préciser</span></li><li><span><b>Durée :</b> à préciser</span></li></ul>
+              <ul><li><span><b>Lieu :</b> Chemin des Cornillons, Pregny-Chambésy</span></li><li><span><b>Bâtiment :</b> Villa, transformation et extension</span></li><li><span><b>Travaux :</b> Isolation, finition pierre et crépi</span></li></ul>
             </details>
           </div>
         </article>
-        <article class="real" data-cat="peinture">
-          <div class="ph"><img src="img/real-3.jpg" alt="Maison ancienne avec volets"><span class="cat">Peinture</span></div>
+        <article class="real">
+          <button class="ph" type="button" data-photos="img/real-grandes-communes-2.jpg|img/real-grandes-communes-1.jpg" aria-label="Voir les photos : Rénovation énergétique d'un grand immeuble, Onex"><img src="img/real-grandes-communes-2.jpg" alt="Rénovation énergétique d'un grand immeuble, Onex" loading="lazy"><span class="cat">Rénovation énergétique</span><span class="nb"><svg><use href="#i-photos"/></svg>2 photos</span></button>
           <div class="corps">
-            <span class="lieu"><svg><use href="#i-pin"/></svg>Lieu à préciser</span>
-            <h2>Peinture de la façade d'une maison ancienne</h2>
-            <p>Lavage, préparation des supports et peinture de la façade, dans le respect du caractère de la maison.</p>
+            <span class="lieu"><svg><use href="#i-pin"/></svg>Onex</span>
+            <h2>Rénovation énergétique d'un grand immeuble</h2>
+            <p>Isolation des édicules, puis reprise de la peinture et du crépi des façades et des balcons.</p>
             <details>
               <summary>Les détails du chantier</summary>
-              <ul><li><span><b>Bâtiment :</b> à préciser</span></li><li><span><b>Travaux :</b> à préciser</span></li><li><span><b>Matériaux :</b> à préciser</span></li><li><span><b>Durée :</b> à préciser</span></li></ul>
+              <ul><li><span><b>Lieu :</b> Avenue des Grandes-Communes, Onex</span></li><li><span><b>Bâtiment :</b> Grand bâtiment de logements</span></li><li><span><b>Travaux :</b> Isolation des édicules, peinture et crépi</span></li></ul>
             </details>
           </div>
         </article>
-        <article class="real" data-cat="facade-ventilee">
-          <div class="ph"><img src="img/real-4.jpg" alt="Immeuble moderne avec façade en pierre"><span class="cat">Façade ventilée</span></div>
+        <article class="real">
+          <button class="ph" type="button" data-photos="img/real-degallier-4.jpg|img/real-degallier-1.jpg|img/real-degallier-2.jpg|img/real-degallier-3.jpg" aria-label="Voir les photos : Isolation d'un bâtiment neuf, Versoix"><img src="img/real-degallier-4.jpg" alt="Isolation d'un bâtiment neuf, Versoix" loading="lazy"><span class="cat">Isolation · Crépi</span><span class="nb"><svg><use href="#i-photos"/></svg>4 photos</span></button>
           <div class="corps">
-            <span class="lieu"><svg><use href="#i-pin"/></svg>Lieu à préciser</span>
-            <h2>Façade ventilée d'un petit immeuble</h2>
-            <p>Pose d'une isolation et d'un revêtement en pierre sur structure, pour une façade durable.</p>
+            <span class="lieu"><svg><use href="#i-pin"/></svg>Versoix</span>
+            <h2>Isolation d'un bâtiment neuf</h2>
+            <p>Isolation complète des façades d'un bâtiment neuf, avec une finition en crépi dentelé.</p>
             <details>
               <summary>Les détails du chantier</summary>
-              <ul><li><span><b>Bâtiment :</b> à préciser</span></li><li><span><b>Travaux :</b> à préciser</span></li><li><span><b>Matériaux :</b> à préciser</span></li><li><span><b>Durée :</b> à préciser</span></li></ul>
+              <ul><li><span><b>Lieu :</b> Chemin Louis-Dégallier, Versoix</span></li><li><span><b>Bâtiment :</b> Bâtiment neuf</span></li><li><span><b>Travaux :</b> Isolation et crépi</span></li><li><span><b>Matériaux :</b> Crépi dentelé</span></li></ul>
             </details>
           </div>
         </article>
-        <article class="real" data-cat="isolation">
-          <div class="ph"><img src="img/real-5.jpg" alt="Immeuble avec échafaudage"><span class="cat">Isolation</span></div>
+        <article class="real">
+          <button class="ph" type="button" data-photos="img/real-montagne-1.jpg|img/real-montagne-2.jpg|img/real-montagne-3.jpg|img/real-montagne-4.jpg" aria-label="Voir les photos : Façade ventilée en briquettes"><img src="img/real-montagne-1.jpg" alt="Façade ventilée en briquettes" loading="lazy"><span class="cat">Façade ventilée</span><span class="nb"><svg><use href="#i-photos"/></svg>4 photos</span></button>
           <div class="corps">
-            <span class="lieu"><svg><use href="#i-pin"/></svg>Lieu à préciser</span>
-            <h2>Isolation de la façade d'un immeuble</h2>
-            <p>Isolation par l'extérieur d'un immeuble habité, avec un chantier organisé pour limiter la gêne.</p>
+            
+            <h2>Façade ventilée en briquettes</h2>
+            <p>Réalisation d'une façade ventilée sur un immeuble de logements neuf, avec un parement en briquettes.</p>
             <details>
               <summary>Les détails du chantier</summary>
-              <ul><li><span><b>Bâtiment :</b> à préciser</span></li><li><span><b>Travaux :</b> à préciser</span></li><li><span><b>Matériaux :</b> à préciser</span></li><li><span><b>Durée :</b> à préciser</span></li></ul>
+              <ul><li><span><b>Bâtiment :</b> Immeuble de logements neuf</span></li><li><span><b>Travaux :</b> Façade ventilée</span></li><li><span><b>Matériaux :</b> Briquettes de parement</span></li></ul>
             </details>
           </div>
         </article>
-        <article class="real" data-cat="entretien">
-          <div class="ph"><img src="img/real-6.jpg" alt="Façades d'immeubles genevois"><span class="cat">Entretien</span></div>
+        <article class="real">
+          <button class="ph" type="button" data-photos="img/real-montbrillant-1.jpg" aria-label="Voir les photos : Ravalement d'un immeuble genevois, Genève"><img src="img/real-montbrillant-1.jpg" alt="Ravalement d'un immeuble genevois, Genève" loading="lazy"><span class="cat">Ravalement · Isolation</span></button>
           <div class="corps">
-            <span class="lieu"><svg><use href="#i-pin"/></svg>Lieu à préciser</span>
-            <h2>Lavage et entretien d'une façade</h2>
-            <p>Lavage à haute pression, démoussage et traitement hydrofuge pour redonner de l'éclat à la façade.</p>
+            <span class="lieu"><svg><use href="#i-pin"/></svg>Genève</span>
+            <h2>Ravalement d'un immeuble genevois</h2>
+            <p>Dépose de l'ancien crépi, isolation en aérogel, un isolant très mince adapté aux façades existantes, puis nouveau crépi.</p>
             <details>
               <summary>Les détails du chantier</summary>
-              <ul><li><span><b>Bâtiment :</b> à préciser</span></li><li><span><b>Travaux :</b> à préciser</span></li><li><span><b>Matériaux :</b> à préciser</span></li><li><span><b>Durée :</b> à préciser</span></li></ul>
+              <ul><li><span><b>Lieu :</b> Chemin de Montbrillant, Genève</span></li><li><span><b>Bâtiment :</b> Immeuble existant</span></li><li><span><b>Travaux :</b> Dépose du crépi, isolation et nouveau crépi</span></li><li><span><b>Matériaux :</b> Isolant aérogel, crépi</span></li></ul>
+            </details>
+          </div>
+        </article>
+        <article class="real">
+          <button class="ph" type="button" data-photos="img/real-peutasse-2.jpg|img/real-peutasse-1.jpg" aria-label="Voir les photos : Immeuble de logements neuf, La Croix-de-Bosson"><img src="img/real-peutasse-2.jpg" alt="Immeuble de logements neuf, La Croix-de-Bosson" loading="lazy"><span class="cat">Isolation · Crépi</span><span class="nb"><svg><use href="#i-photos"/></svg>2 photos</span></button>
+          <div class="corps">
+            <span class="lieu"><svg><use href="#i-pin"/></svg>La Croix-de-Bosson</span>
+            <h2>Immeuble de logements neuf</h2>
+            <p>Isolation des façades d'un bâtiment de logements neuf et finition en crépi.</p>
+            <details>
+              <summary>Les détails du chantier</summary>
+              <ul><li><span><b>Lieu :</b> Chemin de la Peutasse, La Croix-de-Bosson</span></li><li><span><b>Bâtiment :</b> Bâtiment de logements neuf</span></li><li><span><b>Travaux :</b> Isolation et crépi</span></li></ul>
+            </details>
+          </div>
+        </article>
+        <article class="real">
+          <button class="ph" type="button" data-photos="img/real-pralet-1.jpg|img/real-pralet-2.jpg|img/real-pralet-3.jpg|img/real-pralet-4.jpg" aria-label="Voir les photos : Ravalement de deux immeubles, Founex"><img src="img/real-pralet-1.jpg" alt="Ravalement de deux immeubles, Founex" loading="lazy"><span class="cat">Ravalement</span><span class="nb"><svg><use href="#i-photos"/></svg>4 photos</span></button>
+          <div class="corps">
+            <span class="lieu"><svg><use href="#i-pin"/></svg>Founex</span>
+            <h2>Ravalement de deux immeubles</h2>
+            <p>Ravalement complet des façades de deux bâtiments de logements.</p>
+            <details>
+              <summary>Les détails du chantier</summary>
+              <ul><li><span><b>Lieu :</b> Chemin du Pralet, Founex</span></li><li><span><b>Bâtiment :</b> Deux bâtiments de logements</span></li><li><span><b>Travaux :</b> Ravalement de façade</span></li></ul>
+            </details>
+          </div>
+        </article>
+        <article class="real">
+          <button class="ph" type="button" data-photos="img/real-pilotis-1.jpg" aria-label="Voir les photos : Maison de deux logements, Corsier"><img src="img/real-pilotis-1.jpg" alt="Maison de deux logements, Corsier" loading="lazy"><span class="cat">Isolation · Crépi</span></button>
+          <div class="corps">
+            <span class="lieu"><svg><use href="#i-pin"/></svg>Corsier</span>
+            <h2>Maison de deux logements</h2>
+            <p>Isolation en laine minérale et finition en crépi taloché à l'ancienne.</p>
+            <details>
+              <summary>Les détails du chantier</summary>
+              <ul><li><span><b>Lieu :</b> Chemin des Pilotis, Corsier</span></li><li><span><b>Bâtiment :</b> Maison de deux logements</span></li><li><span><b>Travaux :</b> Isolation et crépi</span></li><li><span><b>Matériaux :</b> Laine minérale, crépi taloché à l'ancienne</span></li></ul>
             </details>
           </div>
         </article>
@@ -399,6 +452,32 @@ footer a:hover{color:var(--moutarde-clair)}
     </div>
   </section>
 
+  <!-- Visionneuse photos -->
+  <dialog class="lb" id="lb" aria-label="Photos du chantier">
+    <img alt="">
+    <span class="lb-n"></span>
+    <button class="lb-x" type="button" aria-label="Fermer">×</button>
+    <button class="lb-p" type="button" aria-label="Photo précédente">‹</button>
+    <button class="lb-s" type="button" aria-label="Photo suivante">›</button>
+  </dialog>
+  <script>
+  (function(){
+    var lb=document.getElementById('lb'); if(!lb) return;
+    var im=lb.querySelector('img'), n=lb.querySelector('.lb-n'), L=[], i=0, alt='';
+    function show(){ im.src=L[i]; im.alt=alt+' – photo '+(i+1); n.textContent=(i+1)+' / '+L.length; lb.classList.toggle('solo',L.length<2); }
+    function go(d){ i=(i+d+L.length)%L.length; show(); }
+    document.querySelectorAll('.real .ph').forEach(function(b){
+      b.addEventListener('click',function(){ L=b.dataset.photos.split('|'); i=0; alt=b.querySelector('img').alt; show(); lb.showModal(); });
+    });
+    lb.querySelector('.lb-x').onclick=function(){ lb.close(); };
+    lb.querySelector('.lb-p').onclick=function(){ go(-1); };
+    lb.querySelector('.lb-s').onclick=function(){ go(1); };
+    lb.addEventListener('click',function(e){ if(e.target===lb) lb.close(); });
+    lb.addEventListener('keydown',function(e){ if(e.key==='ArrowLeft') go(-1); if(e.key==='ArrowRight') go(1); });
+    var x0=null; lb.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+    lb.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) go(dx<0?1:-1); x0=null; });
+  })();
+  </script>
   <!-- Devis -->
   <section class="devis-b" id="devis">
     <div class="wrap">
