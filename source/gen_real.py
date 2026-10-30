@@ -12,7 +12,7 @@ P=[
   t="Rénovation énergétique d'un grand immeuble",
   p="Isolation des édicules, puis reprise de la peinture et du crépi des façades et des balcons.",
   bat="Grand bâtiment de logements",trav="Isolation des édicules, peinture et crépi",mat=None),
- dict(s="degallier",n=4,cov=4,cat="Isolation · Crépi",lieu="Versoix",adr="Chemin Louis-Dégallier",
+ dict(s="degallier",n=4,cov=2,cat="Isolation · Crépi",lieu="Versoix",adr="Chemin Louis-Dégallier",
   t="Isolation d'un bâtiment neuf",
   p="Isolation complète des façades d'un bâtiment neuf, avec une finition en crépi dentelé.",
   bat="Bâtiment neuf",trav="Isolation et crépi",mat="Crépi dentelé"),
@@ -28,7 +28,7 @@ P=[
   t="Immeuble de logements neuf",
   p="Isolation des façades d'un bâtiment de logements neuf et finition en crépi.",
   bat="Bâtiment de logements neuf",trav="Isolation et crépi",mat=None),
- dict(s="pralet",n=4,cov=1,cat="Ravalement",lieu="Founex",adr="Chemin du Pralet",
+ dict(s="pralet",n=4,cov=3,cat="Ravalement",lieu="Founex",adr="Chemin du Pralet",
   t="Ravalement de deux immeubles",
   p="Ravalement complet des façades de deux bâtiments de logements.",
   bat="Deux bâtiments de logements",trav="Ravalement de façade",mat=None),
@@ -37,6 +37,8 @@ P=[
   p="Isolation en laine minérale et finition en crépi taloché à l'ancienne.",
   bat="Maison de deux logements",trav="Isolation et crépi",mat="Laine minérale, crépi taloché à l'ancienne"),
 ]
+ORDRE=["colombieres","cornillons","grandes-communes","degallier","peutasse","pralet","pilotis","montbrillant","montagne"]
+P=sorted(P,key=lambda c:ORDRE.index(c["s"]))
 cards=[]
 for c in P:
     order=[c["cov"]]+[i for i in range(1,c["n"]+1) if i!=c["cov"]]
@@ -45,7 +47,7 @@ for c in P:
     nb=f'<span class="nb"><svg><use href="#i-photos"/></svg>{c["n"]} photos</span>' if c["n"]>1 else ''
     lieu=f'<span class="lieu"><svg><use href="#i-pin"/></svg>{c["lieu"]}</span>' if c["lieu"] else ''
     li=[]
-    if c["adr"]: li.append(("Lieu",f'{c["adr"]}, {c["lieu"]}'))
+    if c["lieu"]: li.append(("Lieu",c["lieu"]))
     li+= [("Bâtiment",c["bat"]),("Travaux",c["trav"])]
     if c["mat"]: li.append(("Matériaux",c["mat"]))
     ul="".join(f'<li><span><b>{k} :</b> {v}</span></li>' for k,v in li)
